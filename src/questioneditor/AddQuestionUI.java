@@ -306,7 +306,6 @@ public class AddQuestionUI extends javax.swing.JFrame {
 	}
 
 	private void updateQuestionList() {
-		System.out.println("update");
 		DefaultListModel<String> fileModel = new DefaultListModel<>();
 		DefaultListModel<String> questionModel = new DefaultListModel<>();
 		String[] files = util.sqlQuery("SELECT DISTINCT File FROM Questions");

@@ -102,44 +102,17 @@ public class MainUI extends javax.swing.JFrame {
 	 * @param args the command line arguments
 	 */
 	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		String username;
-		String password;
-		String ipaddr = "localhost:3306";
-
-		System.out.print("Enter user name: ");
-		username = sc.nextLine();
-		System.out.print("Enter password: ");
-		password = sc.nextLine();
-		System.out.print("Enter IP address [Default 'localhost:3306' if empty]: ");
-		String temp = sc.nextLine();
-		if (!temp.isEmpty()) {
-			ipaddr = temp;
-		}
-
+		/* Set the GTK look and feel */
+		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
-			if (util.testServerConnection(ipaddr, username, password)) {
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-
-        	/* Set the GTK look and feel */
-				//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-				try {
-					javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-				} catch (Exception ex) {
-					java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-				}
-				//</editor-fold>
-
-        	/* Create and display the form */
-				java.awt.EventQueue.invokeLater(() -> new MainUI().setVisible(true));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+		} catch (Exception ex) {
+			java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
+		//</editor-fold>
+
+        /* Create and display the form */
+		java.awt.EventQueue.invokeLater(() -> new MainUI().setVisible(true));
 	}
 
 	private javax.swing.JButton AddQuestionsButton;
